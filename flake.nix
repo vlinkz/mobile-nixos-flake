@@ -49,7 +49,18 @@
         ];
       };
 
+      nixosConfigurations.fajita_minimal = nixosSystem {
+        system = "aarch64-linux";
+        modules = [
+          { _module.args = { inherit inputs; }; }
+          (import "${inputs.mobile-nixos}/lib/configuration.nix" {
+            device = "oneplus-fajita";
+          })
+        ];
+      };
+
       fajita-fastboot-images = inputs.self.nixosConfigurations.fajita.config.mobile.outputs.android.android-fastboot-images;
+      fajita-minimal-image = inputs.self.nixosConfigurations.fajita_minimal.config.mobile.outputs.android.android-fastboot-images;
       uefi-x86_64-image = inputs.self.nixosConfigurations.uefi-x86_64.config.mobile.outputs.default;
     };
 }

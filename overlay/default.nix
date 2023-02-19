@@ -5,8 +5,8 @@ self: super:
          version = "43.2-mobile";
          src = super.fetchgit {
            url = "https://gitlab.gnome.org/verdre/gnome-shell.git";
-           rev = "0c42fe4cc05c54a737400973cc5dc8ff9ba51bca";
-           sha256 = "NS4/y7xKIexa76Ltr/Rniflb7zTLEboKXlVe75+U/sk=";
+           rev = "a60349e1cccd761540090f537b426259e8184933";
+           sha256 = "0rr26580cb24d6r5fspq03w4zil5b4x5df4y6bz512f6x74hcz2q";
          };
          postPatch = ''
            patchShebangs src/data-to-c.pl
@@ -26,8 +26,8 @@ self: super:
           version = "43.2-mobile";
           src = super.fetchgit {
             url = "https://gitlab.gnome.org/verdre/mutter.git";
-            rev = "585802e5afeb268251dbb202f7d108fdf4f51da4";
-            sha256 = "DaYTvPbRb3ri59jzv2OU20Y4fpZ22fxXq2G5qRKALZw=";
+            rev = "fc0eda8db254a64e79f8b382e3433568f81940da";
+            sha256 = "0gl5icqacs4h1hjh4kwjni609yimwhfz3gaj3z5a914kjbwvc2jx";
           };
           buildInputs = old.buildInputs ++ [
             super.gtk4
