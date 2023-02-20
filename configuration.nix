@@ -28,7 +28,7 @@ in
 
     sound.enable = true;
     hardware.pulseaudio.enable = true;
-    services.pipewire.enable = false;
+    services.pipewire.enable = lib.mkForce false;
     zramSwap.enable = true;
     networking.firewall.enable = false;
     system.stateVersion = "23.05";

@@ -49,11 +49,11 @@
     "mobile-nixos": {
       "flake": false,
       "locked": {
-        "lastModified": 1676777113,
-        "narHash": "sha256-BLZ6pt44BMdP4FgH9lQ2s6BB1J2tSpcLIUlaegvLAZQ=",
+        "lastModified": 1676780201,
+        "narHash": "sha256-afeKeIz1UOVSBES66WlPdi6kQTpYEq7XRbKJekbqkgU=",
         "owner": "vlinkz",
         "repo": "mobile-nixos",
-        "rev": "c14f7ccb44caf11ec0f014491971c9690308a9a8",
+        "rev": "014eab71f89497d247a363292a4654297f094e88",
         "type": "github"
       },
       "original": {
