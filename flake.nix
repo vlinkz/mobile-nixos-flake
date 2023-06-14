@@ -5,9 +5,10 @@
       url = "github:numtide/flake-utils";
     };
     mobile-nixos = {
-      url = "github:vlinkz/mobile-nixos/gnomelatest";
+      url = "github:nixos/mobile-nixos";
       flake = false;
     };
+    gnome-mobile.url = "github:chuangzhu/nixpkgs-gnome-mobile";
     snowflake.url = "github:snowflakelinux/snowflake-modules";
     nix-data.url = "github:snowflakelinux/nix-data";
     nix-software-center.url = "github:vlinkz/nix-software-center";
@@ -35,6 +36,7 @@
           ./snowflake.nix
           inputs.snowflake.nixosModules.snowflake
           inputs.nix-data.nixosModules."aarch64-linux".nix-data
+          inputs.gnome-mobile.nixosModules.gnome-mobile
         ];
       };
 
@@ -46,6 +48,7 @@
             device = "uefi-x86_64";
           })
           ./configuration.nix
+          inputs.gnome-mobile.nixosModules.gnome-mobile
         ];
       };
 

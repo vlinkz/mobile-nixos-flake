@@ -12,10 +12,6 @@
    splash = lib.mkDefault true;
   };
 
-  nixpkgs.overlays = [
-    (import ./overlay)
-  ];
-
   services.xserver.enable = true;
   services.xserver.desktopManager.gnome = {
     enable = true;
