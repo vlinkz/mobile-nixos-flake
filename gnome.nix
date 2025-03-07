@@ -12,21 +12,6 @@
    splash = lib.mkDefault true;
   };
 
-  services.xserver.enable = true;
-  services.xserver.desktopManager.gnome = {
-    enable = true;
-    extraGSettingsOverrides = ''
-      [org.gnome.mutter.dynamic-workspaces]
-      enabled=true
-    '';
-    extraGSettingsOverridePackages = [ pkgs.gnome.mutter ];
-  };
-  services.xserver.displayManager.gdm.enable = true;
-
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome-tour
-  ]);
-
   programs.calls.enable = true;
 
   environment.systemPackages = with pkgs; [

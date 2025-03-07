@@ -5,14 +5,12 @@
       url = "github:numtide/flake-utils";
     };
     mobile-nixos = {
-      url = "github:nixos/mobile-nixos";
+      url = "github:mobile-nixos/mobile-nixos";
       flake = false;
     };
     gnome-mobile.url = "github:chuangzhu/nixpkgs-gnome-mobile";
-    snowflake.url = "github:snowflakelinux/snowflake-modules";
     nix-data.url = "github:snowflakelinux/nix-data";
     nix-software-center.url = "github:vlinkz/nix-software-center";
-    nixos-conf-editor.url = "github:vlinkz/nixos-conf-editor";
     snow.url = "github:snowflakelinux/snow";
   };
 
@@ -29,13 +27,16 @@
         system = "aarch64-linux";
         modules = [
           { _module.args = { inherit inputs; }; }
+          {
+            nixpkgs.config.allowUnfree = true;
+            nixpkgs.config.allowInsecure = true;
+          }
           (import "${inputs.mobile-nixos}/lib/configuration.nix" {
             device = "oneplus-fajita";
           })
           ./configuration.nix
           ./snowflake.nix
-          inputs.snowflake.nixosModules.snowflake
-          inputs.nix-data.nixosModules."aarch64-linux".nix-data
+          inputs.nix-data.nixosModules.nix-data
           inputs.gnome-mobile.nixosModules.gnome-mobile
         ];
       };
@@ -44,6 +45,10 @@
         system = "x86_64-linux";
         modules = [
           { _module.args = { inherit inputs; }; }
+          {
+            nixpkgs.config.allowUnfree = true;
+            nixpkgs.config.allowInsecure = true;
+          }
           (import "${inputs.mobile-nixos}/lib/configuration.nix" {
             device = "uefi-x86_64";
           })

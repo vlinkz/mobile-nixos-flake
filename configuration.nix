@@ -13,7 +13,7 @@ in
   config = {
     users.users."${defaultUserName}" = {
       isNormalUser = true;
-      password = "1234";
+      password = "123456";
       extraGroups = [
         "dialout"
         "feedbackd"
@@ -26,11 +26,12 @@ in
       enable = true;
     };
 
-    sound.enable = true;
-    hardware.pulseaudio.enable = true;
-    services.pipewire.enable = lib.mkForce false;
+    environment.sessionVariables.NIXPKGS_ALLOW_UNFREE = "1";
+
+    services.pulseaudio.enable = lib.mkForce false;
+    # services.pipewire.enable = lib.mkForce false;
     zramSwap.enable = true;
-    networking.firewall.enable = false;
-    system.stateVersion = "23.05";
+    networking.firewall.enable = lib.mkForce false;
+    system.stateVersion = "24.11";
   };
 }
