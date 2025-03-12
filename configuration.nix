@@ -1,8 +1,10 @@
-{ config, lib, pkgs, ... }:
-
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
-  inherit (lib) mkForce;
-  system_type = config.mobile.system.type;
   defaultUserName = "victor";
 in
 {
@@ -26,12 +28,20 @@ in
       enable = true;
     };
 
+    environment.systemPackages = with pkgs; [
+      fractal
+      mission-center
+    ];
     environment.sessionVariables.NIXPKGS_ALLOW_UNFREE = "1";
 
-    services.pulseaudio.enable = lib.mkForce false;
-    # services.pipewire.enable = lib.mkForce false;
     zramSwap.enable = true;
     networking.firewall.enable = lib.mkForce false;
+
+    nix.settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+
     system.stateVersion = "24.11";
   };
 }

@@ -5,21 +5,16 @@
       url = "github:numtide/flake-utils";
     };
     mobile-nixos = {
-      url = "github:mobile-nixos/mobile-nixos";
+      url = "github:vlinkz/mobile-nixos/sdm845-6.14";
       flake = false;
     };
     gnome-mobile.url = "github:chuangzhu/nixpkgs-gnome-mobile";
-    nix-data.url = "github:snowflakelinux/nix-data";
-    nix-software-center.url = "github:vlinkz/nix-software-center";
-    snow.url = "github:snowflakelinux/snow";
   };
 
-  outputs = inputs @ { nixpkgs, mobile-nixos, ... }:
+  outputs =
+    inputs@{ nixpkgs, mobile-nixos, ... }:
     let
-
       inherit (inputs.nixpkgs.lib) nixosSystem;
-      inherit (inputs.flake-utils.lib) eachDefaultSystem;
-
     in
     {
 
@@ -29,14 +24,14 @@
           { _module.args = { inherit inputs; }; }
           {
             nixpkgs.config.allowUnfree = true;
-            nixpkgs.config.allowInsecure = true;
+            nixpkgs.config.permittedInsecurePackages = [
+              "olm-3.2.16"
+            ];
           }
           (import "${inputs.mobile-nixos}/lib/configuration.nix" {
             device = "oneplus-fajita";
           })
           ./configuration.nix
-          ./snowflake.nix
-          inputs.nix-data.nixosModules.nix-data
           inputs.gnome-mobile.nixosModules.gnome-mobile
         ];
       };
@@ -47,7 +42,9 @@
           { _module.args = { inherit inputs; }; }
           {
             nixpkgs.config.allowUnfree = true;
-            nixpkgs.config.allowInsecure = true;
+            nixpkgs.config.permittedInsecurePackages = [
+              "olm-3.2.16"
+            ];
           }
           (import "${inputs.mobile-nixos}/lib/configuration.nix" {
             device = "uefi-x86_64";
@@ -67,8 +64,10 @@
         ];
       };
 
-      fajita-fastboot-images = inputs.self.nixosConfigurations.fajita.config.mobile.outputs.android.android-fastboot-images;
-      fajita-minimal-image = inputs.self.nixosConfigurations.fajita_minimal.config.mobile.outputs.android.android-fastboot-images;
+      fajita-fastboot-images =
+        inputs.self.nixosConfigurations.fajita.config.mobile.outputs.android.android-fastboot-images;
+      fajita-minimal-image =
+        inputs.self.nixosConfigurations.fajita_minimal.config.mobile.outputs.android.android-fastboot-images;
       uefi-x86_64-image = inputs.self.nixosConfigurations.uefi-x86_64.config.mobile.outputs.default;
     };
 }
