@@ -36,17 +36,32 @@
     "mobile-nixos": {
       "flake": false,
       "locked": {
-        "lastModified": 1741764632,
-        "narHash": "sha256-IXLEqDiSQockM1xA+CR3Ee1YRXz6HM6+P5hhAfT9HTA=",
+        "lastModified": 1741837934,
+        "narHash": "sha256-9GQyqCTAs9jShg0YdYsgWZalG3dwprkZK3vOHdoyeiE=",
         "owner": "vlinkz",
         "repo": "mobile-nixos",
-        "rev": "38787df51c68e5c49336476c89322f04a47f90f3",
+        "rev": "01db23f1cd3abfbd14dc06b983f336e74286730e",
         "type": "github"
       },
       "original": {
         "owner": "vlinkz",
         "ref": "sdm845-6.14",
         "repo": "mobile-nixos",
+        "type": "github"
+      }
+    },
+    "nix-flatpak": {
+      "locked": {
+        "lastModified": 1739444422,
+        "narHash": "sha256-iAVVHi7X3kWORftY+LVbRiStRnQEob2TULWyjMS6dWg=",
+        "owner": "gmodena",
+        "repo": "nix-flatpak",
+        "rev": "5e54c3ca05a7c7d968ae1ddeabe01d2a9bc1e177",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gmodena",
+        "repo": "nix-flatpak",
         "type": "github"
       }
     },
@@ -71,6 +86,7 @@
         "flake-utils": "flake-utils",
         "gnome-mobile": "gnome-mobile",
         "mobile-nixos": "mobile-nixos",
+        "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs"
       }
     },

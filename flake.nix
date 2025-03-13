@@ -9,6 +9,7 @@
       flake = false;
     };
     gnome-mobile.url = "github:chuangzhu/nixpkgs-gnome-mobile";
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
   };
 
   outputs =
@@ -33,6 +34,15 @@
           })
           ./configuration.nix
           inputs.gnome-mobile.nixosModules.gnome-mobile
+          inputs.nix-flatpak.nixosModules.nix-flatpak
+          {
+            services.flatpak.remotes = [
+              {
+                name = "flathub";
+                location = "https://flathub.org/repo/flathub.flatpakrepo";
+              }
+            ];
+          }
         ];
       };
 
